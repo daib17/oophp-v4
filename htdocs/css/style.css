@@ -1,15 +1,24 @@
 /**
  * General setup for layout.
  */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 html {
     overflow-y: scroll;
     background-color: #424242;
+    font-family: 'Roboto Mono', monospace;
 }
 
 body {
     margin: 0;
     background-color: #fff;
     word-wrap: break-word;
+}
+
+.figure {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .outer-wrap {
@@ -30,9 +39,10 @@ body {
  */
 .outer-wrap-header {
     max-width: 100%;
-    min-height: 2em;
+    min-height: 1em;
     background-color: #000;
     color: #fff;
+    padding: 1em;
 }
 
 .outer-wrap-header {
@@ -49,6 +59,10 @@ body {
     left: 1em;
 }
 
+.header {
+    vertical-align: center;
+}
+
 
 
 /**
@@ -56,14 +70,15 @@ body {
  */
 .outer-wrap-navbar {
     max-width: 100%;
-    min-height: 2em;
+    min-height: 1em;
     background-color: #535353;
     color: #fff;
-    padding: 0.5em 0;
+    padding: 1em 0;
 }
 
 .outer-wrap-navbar a {
     color: #fff;
+    text-decoration: none;
 }
 
 .outer-wrap-navbar a:hover {
@@ -89,7 +104,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 
@@ -99,10 +114,11 @@ h1 {
  */
 .outer-wrap-footer {
     max-width: 100%;
-    min-height: 10em;
+    min-height: 6em;
     background-color: #424242;
     color: #fff;
     padding: 1em 0;
+    text-align: center;
 }
 
 

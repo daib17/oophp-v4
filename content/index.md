@@ -4,22 +4,12 @@ title: "Min fina titel"
 Min me-sida i kursen oophp
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
+[FIGURE src="image/teide.jpg"]
 
-[FIGURE src="image/me.jpg?w=500" caption="Bild på mig"]
+Mitt namn är Daniel och jag kommer från en stad i norra Spanien som heter Pamplona. Sedan jag flyttade därifrån för 20 år sedan har jag bott på Irland, i Frankrike och de senaste åren i Uppsala.
 
-Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.
+Jag har tidigare jobbat som IT-systemvetare, men ville göra något annat och läste till psykolog. Nu vill jag tillbaks till datavärlden igen. Jag har alltid varit intresserad av programmering, från C64-dagarna när man fick vänta flera veckor på programmeringsboken man beställt från Madrid 50 mil hemifrån... Några andra av mina intressen är astronomi, gamla sci-fi filmer och att spela gitarr.
 
-Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.
+Nu börjar andra året på utbildningen och jag ser fram emot att lära mig mer och fördjupa mig i det här ämnet. 
 
-Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.
-
-Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.
-
-Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.
-
-Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching och sedan turfing. Nu ligger jag lågt med hobbies, men något kanske dyker upp...?
-
-Vi syns och hörs i forum och chatt!
-
-/Mikael
+/Daniel
