@@ -27,8 +27,25 @@ Min TIL för detta kmom måste vara att börja med OOP i PHP. Att skapa min för
 Kmom02
 -------------------------
 
-Här är redovisningstexten
+**Hur gick det att överföra spelet “Gissa mitt nummer” in i din me-sida?**
 
+Det gick bra till slut men jag skulle inte ha kunnat genomföra uppgiften utan hjälp av videoserien. Det är så mycket i anax som jag inte har koll på att jag får panik varje gång jag får ett felmeddelande. Det finns också små variationer mellan den uppdaterade versionen av anax och den som användes när videon filmades, vilket gör det lite mer komplicerat.
+
+**Berätta om din syn på modellering likt UML jämfört med verktyg som phpDocumentor. Fördelar, nackdelar, användningsområde? Vad tycker du om konceptet make doc?**
+
+Båda UML och phpDocumentor hjälper till att generera information om kodens struktur (klasser, attributer, metoder, m.m.) och funktionalitet. De gör det på olika sätt, UML i form av visuella diagram och phpDocumentor på ett mer vanligt sätt genom att använda kommentarer i koden för att skapa ett långt dokument som beskriver kodens interface.
+
+phpDocumentor är ett lätt verktyg att använda. Det behövs bara bra kommentarer för att automatiskt skapa användbar dokumentation. UML är mycket mer. Det kan också användas för att generera information som kan hjälpa till att förstå koden, men det är inte ett verktyg som phpDocumentor utan ett modelleringsspråk som kan hjälpa i planeringen av ett projekt innan man börjar koda.
+
+När det gäller make doc tycker jag att det är mycket praktiskt att kunna köra ett kommando som direkt generarar dokumentation på ett automatiskt sätt.
+
+**Hur känns det att skriva kod utanför och inuti ramverket, ser du fördelar och nackdelar med de olika sätten?**
+
+Det är absolut mycket lättare för mig att skriva kod utanför ramverket, speciellt nu när jag inte har full koll på anax struktur och kod, men jag kan redan se nackdelar med att använda ett ramverket som delar koden i router, klasser och vyer.
+
+**Vilken är din TIL för detta kmom?**
+
+Min TIL för detta kmom är att se hur PHP implementerar arv och hur man använder konstanter inom en klass med self.
 
 
 Kmom03

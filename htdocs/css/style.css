@@ -16,9 +16,12 @@ body {
 }
 
 .figure {
-    width: 100%;
     margin: 0;
     padding: 0;
+}
+
+img {
+    max-width: 100%;
 }
 
 .outer-wrap {
@@ -30,6 +33,10 @@ body {
     margin: 0 auto;
     max-width: 680px;
     padding: 0 0.5em;
+}
+
+.error {
+    color: red;
 }
 
 
@@ -91,7 +98,7 @@ body {
  * Main
  */
 .outer-wrap-main {
-    min-height: 20em;
+    min-height: 30em;
     margin-bottom: 4em;
 }
 

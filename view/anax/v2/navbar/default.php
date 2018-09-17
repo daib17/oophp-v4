@@ -14,5 +14,7 @@ namespace Anax\View;
 <navbar>
     <a href="<?= url("") ?>">Hem</a> |
     <a href="<?= url("redovisning") ?>">Redovisning</a> |
-    <a href="<?= url("om") ?>">Om</a>
+    <a href="<?= url("om") ?>">Om</a> |
+    <a href="<?= url("gissa") ?>">Gissa</a>
+
 </navbar>
