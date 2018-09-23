@@ -113,9 +113,9 @@ $app->router->any(["GET", "POST"], "gissa/session", function () use ($app) {
     if (isset($_POST["doReset"])) {
         $game = new \Daib\Guess\Guess();
         $guess = null;
-    } else if (isset($_SESSION["game"])) {
+    } else if (isset($_SESSION["guessGame"])) {
         // Unserialize object
-        $game = unserialize($_SESSION["game"]);
+        $game = unserialize($_SESSION["guessGame"]);
         $guess = $_POST["guess"] ?? null;
     } else {
         $number = $_POST["number"] ?? -1;
@@ -135,7 +135,7 @@ $app->router->any(["GET", "POST"], "gissa/session", function () use ($app) {
     }
 
     // Serialize object
-    $_SESSION["game"] = serialize($game);
+    $_SESSION["guessGame"] = serialize($game);
 
     $data["game"] = $game;
     $data["res"] = $res;

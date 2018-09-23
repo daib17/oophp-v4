@@ -1,0 +1,106 @@
+<?php
+namespace Daib\T100;
+
+/**
+* A Round class representing a series of rolls (hands) of dice.
+*/
+class Round
+{
+    /**
+    * @var DiceHand $hands array of DiceHand objects.
+    */
+    private $hands;
+
+    /**
+    * Constructor initializes object Round.
+    */
+    public function __construct()
+    {
+        $this->hands = array();
+    }
+
+    /**
+    * Create DiceHand object, roll hand and append it to array.
+    *
+    * @return void
+    */
+    public function rollHand(): void
+    {
+        $diceHand = new DiceHand();
+        $diceHand->roll();
+        $this->hands[] = $diceHand;
+    }
+
+    /**
+    * Get values for last hand of dice in array of hands.
+    *
+    * @return array an array of values for the last hand in array.
+    */
+    public function getLastHandValues(): array
+    {
+        if (count($this->hands) > 0) {
+            return $this->hands[count($this->hands) - 1]->values();
+        } else {
+            return $this->hands;    // empty array
+        }
+    }
+
+    /**
+    * Get sum of values for last hand in array of hands.
+    *
+    * @return int sum of all dice values in last hand.
+    */
+    public function getLastHandSum()
+    {
+        if (count($this->hands) > 0) {
+            return $this->hands[count($this->hands) - 1]->sum(true);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Get total value for all dice for all hands in actual round.
+    *
+    * @return int sum of all values for all hands in array.
+    */
+    public function getTotalValue(): int
+    {
+        $total = 0;
+        foreach ($this->hands as $hand) {
+            $handValue = $hand->sum(true);
+            if ($handValue == 0) {
+                return 0;
+            } else {
+                $total += $handValue;
+            }
+        }
+
+        return $total;
+    }
+
+    /**
+    * Get number of DiceHand objects in Round.
+    *
+    * @return int number of DiceHand objects in Round.
+    */
+    public function getHandsCount(): int
+    {
+        return count($this->hands);
+    }
+
+    /**
+    * Get last DiceHand object in array.
+    *
+    * @return DiceHand last object in array or null if empty.
+    */
+    public function getLastHand()
+    {
+        if (count($this->hands) > 0) {
+            return $this->hands[count($this->hands) - 1];
+        } else {
+            return null;
+        }
+    }
+}
+
