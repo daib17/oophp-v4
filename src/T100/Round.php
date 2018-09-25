@@ -102,4 +102,14 @@ class Round
             return null;
         }
     }
+
+    /**
+    * Return array of all hands in round.
+    *
+    * @return array array of DiceHand objects.
+    */
+    public function getAllHands(): array
+    {
+        return $this->hands;
+    }
 }

@@ -89,4 +89,15 @@ class RoundTest extends TestCase
         } while ($sum1 != 0 && $sum2 != 0);
         $this->assertEquals(0, $round->getTotalValue());
     }
+
+    /**
+    * Test getAllHands method.
+    */
+    public function testGetAllHands()
+    {
+        $round = new Round();
+        $this->assertEquals(0, count($round->getAllHands()));
+        $round->rollHand();
+        $this->assertEquals(1, count($round->getAllHands()));
+    }
 }

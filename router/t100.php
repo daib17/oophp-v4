@@ -13,8 +13,8 @@ $app->router->any(["GET", "POST"], "t100/play", function () use ($app) {
     if (!$game->gameIsOver()) {
         if (isset($_POST["roll"])) {
             $game->roll();
-        } elseif (isset($_POST["stay"])) {
-            $game->changeTurn();
+        } elseif (isset($_POST["goCPU"])) {
+            $game->cpuPlays();
         }
     }
 

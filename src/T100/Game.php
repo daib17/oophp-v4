@@ -33,64 +33,69 @@ class Game
     */
     public function init(): void
     {
-        $this->newRound();
+        $this->turn = 0;
+        // add Round to player's array
+        $this->roundArr[0][] = new Round();
     }
 
     /**
-    * Add new Round object to array for actual player.
-    *
-    * @return void.
-    */
-    public function newRound(): void
-    {
-        $this->roundArr[$this->turn][] = new Round();
-    }
-
-    /**
-    * Swaps turn between player and cpu.
-    *
-    * @return void.
-    */
-    public function changeTurn(): void
-    {
-        $this->turn = ($this->turn == 0 ? 1 : 0);
-        $this->newRound();
-    }
-
-    /**
-    * Roll hand for actual player and changes turn.
+    * Roll hand for actual player.
     *
     * @return void.
     */
     public function roll(): void
     {
-        $id = count($this->roundArr[$this->turn]) - 1;
-        $this->roundArr[$this->turn][$id]->rollHand();
-        if ($this->roundArr[$this->turn][$id]->getLastHandSum() == 0) {
-            $this->changeTurn();
-        }
+        $roundID = count($this->roundArr[0]) - 1;
+        $this->roundArr[0][$roundID]->rollHand();
+    }
 
-        // cpu?
-        if ($this->turn > 0) {
-            $this->cpuPlays();
+    /**
+    * Roll hand for cpu.
+    *
+    * @return void.
+    */
+    public function cpuPlays(): void
+    {
+        $this->turn = 1;
+        // new Round for cpu
+        $this->roundArr[1][] = new Round();
+        // roll hand while not game over, sum not zero and cpu's points lower
+        // than player's.
+        do {
+            $roundID = count($this->roundArr[1]) - 1;
+            $this->roundArr[1][$roundID]->rollHand();
+        } while (!$this->gameIsOver() &&
+            $this->roundArr[1][$roundID]->getLastHandSum() != 0 &&
+            $this->getTotalValue(1) < $this->getTotalValue(0));
+
+        if (!$this->gameIsOver()) {
+            $this->turnBackToPlayer();
         }
     }
 
     /**
-    * Algorithm for cpu that chooses between roll och stay depending on
-    * the player's points and also the accumulated points in the actual
-    * round.
+    * Turn goes back to human after cpu played.
     *
-    * @return string cpu action, roll or stay.
+    * @return void.
     */
-    public function cpuPlays(): string
+    public function turnBackToPlayer(): void
     {
-        if ($this->getTotalValue(0) > 85 ||
-        $this->getActualRound(1)->getTotalValue() < 15) {
-            return "roll";
-        } else {
-            return "stay";
-        }
+        $this->turn = 0;
+        // add Round to player
+        $this->roundArr[0][] = new Round();
+    }
+
+    /**
+    * Get last hand sum for given player.
+    *
+    * @var int $index indicates the array (0: player, 1: cpu)
+    *
+    * @return int last hand's value. 0 if it contains a dice with value of 1.
+    */
+    public function getLastHandSum(int $index): int
+    {
+        $id = count($this->roundArr[$index]) - 1;
+        return $this->roundArr[$index][$id]->getLastHandSum();
     }
 
     /**
@@ -118,7 +123,7 @@ class Game
     }
 
     /**
-    * Get total value for all the hands in the array.
+    * Get total value for all the rounds in the array.
     *
     * @var int $index indicates the array (0: player, 1: cpu)
     *
