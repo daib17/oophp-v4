@@ -1,25 +1,23 @@
 <?php
 
-$app->router->any(["GET", "POST"], "t100/play", function () use ($app) {
-    // Restart button or new game?
-    if (isset($_POST["reset"]) || !isset($_SESSION["game"])) {
+$app->router->any("GET|POST", "t100/play", function () use ($app) {
+
+    $game = $app->session->get("game");
+
+    if (!$game || $app->request->getPost("reset")) {
         $game = new \Daib\T100\Game();
         $game->init();
-    } else {
-        // Continue previous game
-        $game = unserialize($_SESSION["game"]);
     }
 
     if (!$game->gameIsOver()) {
-        if (isset($_POST["roll"])) {
+        if ($app->request->getPost("roll")) {
             $game->roll();
-        } elseif (isset($_POST["goCPU"])) {
+        } elseif ($app->request->getPost("goCPU")) {
             $game->cpuPlays();
         }
     }
 
-    // Serialize object
-    $_SESSION["game"] = serialize($game);
+    $app->session->set("game", $game);
 
     // Add view and render page
     $app->page->add("anax/v2/t100/play", [

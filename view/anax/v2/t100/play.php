@@ -40,7 +40,7 @@ namespace Daib\T100;
         <p><?= implode(", ", $hand->values()); ?>
             (<?= $hand->sum(true); ?> points)</p>
     <?php endforeach; ?>
-    <p>Round: <?= $game->getActualRound(0)->getTotalValue(); ?></p>
+    <p>Round: <?= $game->getActualRound(0)->getValue(); ?></p>
     <p>Total: <?= $game->getTotalValue(0); ?></p>
     <?php if ($game->getTurn() == 0 && !$game->gameIsOver()) : ?>
         <?php if (!empty($game->getActualRound(0)->getAllHands()) && $game->getLastHandSum(0) == 0) : ?>
@@ -56,6 +56,10 @@ namespace Daib\T100;
     <?php elseif (!$game->gameIsOver()) : ?>
         <p>Wait your turn...</p>
     <?php endif; ?>
+    <br>
+    <?php if (!empty($game->getActualRound(0)->getAllHands())) : ?>
+        <?php echo $game->printHistogram(0); ?>
+    <?php endif; ?>
 </div>
 
 <div class="right">
@@ -65,8 +69,9 @@ namespace Daib\T100;
             <p><?= implode(", ", $hand->values()); ?>
                 (<?= $hand->sum(true); ?> points)</p>
         <?php endforeach; ?>
-        <p>Round: <?= $game->getActualRound(1)->getTotalValue(); ?></p>
+        <p>Round: <?= $game->getActualRound(1)->getValue(); ?></p>
         <p>Total: <?= $game->getTotalValue(1); ?></p>
     <?php endif; ?>
     <p>Waiting for my turn...</p>
+    <?php echo $game->printHistogram(1); ?>
 </div>

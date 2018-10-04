@@ -70,4 +70,15 @@ class GameTest extends TestCase
         $game->init();
         $this->assertEquals(0, $game->getTurn());
     }
+
+    /**
+    * Test method getTurn.
+    */
+    public function testprintHistogram()
+    {
+        $game = new Game();
+        $game->init();
+        $this->assertFalse($game->printHistogram(0) == "");
+        $this->assertTrue($game->printHistogram(1) == "");
+    }
 }

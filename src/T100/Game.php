@@ -6,10 +6,10 @@ namespace Daib\T100;
 */
 class Game
 {
-    const TARGET = 100; // Points to win game.
+    const TARGET = 100;     // Points to win game.
 
     /**
-    * @var Round $roundsArr array of arrays of Round objects.
+    * @var RoundHistogram $roundsArr array of arrays of RoundHistogram objects.
     * @var int $turn integer for the actual turn (0:player, 1:cpu).
     */
     private $roundArr;
@@ -34,8 +34,8 @@ class Game
     public function init(): void
     {
         $this->turn = 0;
-        // add Round to player's array
-        $this->roundArr[0][] = new Round();
+        // add RoundHistogram to player's array
+        $this->roundArr[0][] = new RoundHistogram();
     }
 
     /**
@@ -57,16 +57,17 @@ class Game
     public function cpuPlays(): void
     {
         $this->turn = 1;
-        // new Round for cpu
-        $this->roundArr[1][] = new Round();
-        // roll hand while not game over, sum not zero and cpu's points lower
-        // than player's.
+        // new RoundHistogram for cpu
+        $this->roundArr[1][] = new RoundHistogram();
+        // keeping rolling hand while not game over, hand's sum not zero,
+        // and cpu's points lower than player's OR hand lower than 20.
         do {
             $roundID = count($this->roundArr[1]) - 1;
             $this->roundArr[1][$roundID]->rollHand();
         } while (!$this->gameIsOver() &&
-            $this->roundArr[1][$roundID]->getLastHandSum() != 0 &&
-            $this->getTotalValue(1) < $this->getTotalValue(0));
+        $this->roundArr[1][$roundID]->getLastHandSum() != 0 &&
+        ($this->getTotalValue(1) < $this->getTotalValue(0) ||
+        $this->getActualRound(1)->getValue() < 20));
 
         if (!$this->gameIsOver()) {
             $this->turnBackToPlayer();
@@ -81,8 +82,8 @@ class Game
     public function turnBackToPlayer(): void
     {
         $this->turn = 0;
-        // add Round to player
-        $this->roundArr[0][] = new Round();
+        // add RoundHistogram to player
+        $this->roundArr[0][] = new RoundHistogram();
     }
 
     /**
@@ -99,19 +100,19 @@ class Game
     }
 
     /**
-    * Get last Round object in array.
+    * Get last RoundHistogram object in array.
     *
     * @var int $index indicates the array (0: player, 1: cpu)
     *
-    * @return Round object Round.
+    * @return RoundHistogram object RoundHistogram.
     */
-    public function getActualRound(int $index): Round
+    public function getActualRound(int $index): RoundHistogram
     {
         return $this->roundArr[$index][count($this->roundArr[$index]) - 1];
     }
 
     /**
-    * Get number of Round objects in array.
+    * Get number of RoundHistogram objects in array.
     *
     * @var int $index indicates the array (0: player, 1: cpu)
     *
@@ -133,7 +134,7 @@ class Game
     {
         $total = 0;
         foreach ($this->roundArr[$index] as $round) {
-            $total += $round->getTotalValue();
+            $total += $round->getValue();
         }
         return $total;
     }
@@ -146,6 +147,25 @@ class Game
     public function getTurn(): int
     {
         return $this->turn;
+    }
+
+    /**
+    *  Return string representing histogram of values for actual
+    *  round.
+    *
+    *  @var int $index indicates the array (0: player, 1: cpu)
+    *
+    * @return string string representing histogram for actual round.
+    */
+    public function printHistogram(int $index): string
+    {
+        $histo = new Histogram();
+        if ($this->getRoundCount($index) > 0) {
+            $histo->injectData($this->getActualRound($index));
+            return $histo->getAsText();
+        } else {
+            return "";
+        }
     }
 
     /**

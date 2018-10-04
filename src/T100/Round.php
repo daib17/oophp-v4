@@ -6,10 +6,14 @@ namespace Daib\T100;
 */
 class Round
 {
+    const N_DICE = 5;   // Number of dice
+    const SIDES = 6;    // Number of sides
+
     /**
     * @var DiceHand $hands array of DiceHand objects.
     */
     private $hands;
+
 
     /**
     * Constructor initializes object Round.
@@ -26,7 +30,7 @@ class Round
     */
     public function rollHand(): void
     {
-        $diceHand = new DiceHand();
+        $diceHand = new DiceHand(self::N_DICE, self::SIDES);
         $diceHand->roll();
         $this->hands[] = $diceHand;
     }
@@ -64,7 +68,7 @@ class Round
     *
     * @return int sum of all values for all hands in array.
     */
-    public function getTotalValue(): int
+    public function getValue(): int
     {
         $total = 0;
         foreach ($this->hands as $hand) {

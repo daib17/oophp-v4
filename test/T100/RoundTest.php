@@ -65,9 +65,9 @@ class RoundTest extends TestCase
     }
 
     /**
-    * Test getTotalValue method.
+    * Test getValue method.
     */
-    public function testGetTotalValue()
+    public function testGetValue()
     {
         // Test with non zero value $hands
         do {
@@ -77,7 +77,7 @@ class RoundTest extends TestCase
             $round->rollHand(); // 2st hand
             $sum2 = $round->getLastHandSum();
         } while ($sum1 == 0 || $sum2 == 0);
-        $this->assertEquals($sum1 + $sum2, $round->getTotalValue());
+        $this->assertEquals($sum1 + $sum2, $round->getValue());
 
         // Test with at least one zero value hand
         do {
@@ -87,7 +87,7 @@ class RoundTest extends TestCase
             $round->rollHand(); // 2st hand
             $sum2 = $round->getLastHandSum();
         } while ($sum1 != 0 && $sum2 != 0);
-        $this->assertEquals(0, $round->getTotalValue());
+        $this->assertEquals(0, $round->getValue());
     }
 
     /**

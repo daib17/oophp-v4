@@ -1,0 +1,69 @@
+<?php
+
+namespace Daib\T100;
+
+/**
+* Generating histogram data.
+*/
+class Histogram
+{
+    /**
+    * @var array $serie  The numbers stored in sequence.
+    * @var int   $min    The lowest possible number.
+    * @var int   $max    The highest possible number.
+    */
+    private $serie = [];
+    private $min;
+    private $max;
+
+    /**
+    * Inject the object to use as base for the histogram data.
+    *
+    * @param HistogramInterface $object The object holding the serie.
+    *
+    * @return void.
+    */
+    public function injectData(HistogramInterface $object)
+    {
+        $this->serie = $object->getHistogramSerie();
+        $this->min   = $object->getHistogramMin();
+        $this->max   = $object->getHistogramMax();
+    }
+
+    /**
+    * Get the serie.
+    *
+    * @return array with the serie.
+    */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+    * Return a string with a textual representation of the histogram.
+    *
+    * @return string representing the histogram.
+    */
+    public function getAsText()
+    {
+        // Do not show histogram before first roll after restoring session.
+        // Dice has not been initialized yet. $this->max has no value.
+        if (!$this->max) {
+            return "";
+        }
+        $histo = [];
+        $histo = array_fill($this->min, $this->max - $this->min + 1, 0);
+
+        foreach ($this->serie as $value) {
+            $histo[$value]++;
+        }
+
+        // Print out
+        $res = "";
+        foreach ($histo as $key => $value) {
+            $res .= $key . ": " . str_repeat('*', $value) . "<br>";
+        }
+        return $res;
+    }
+}
