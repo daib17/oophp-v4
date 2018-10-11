@@ -111,8 +111,23 @@ Traits är alldeles nytt för mig så det blir min TIL för den här veckan. Int
 Kmom05
 -------------------------
 
-Här är redovisningstexten
+**Några reflektioner kring koden i övningen för PHP PDO och MySQL?**
 
+Det här övningen har blivit ett väldigt bra sätt för mig att komma igång i PHP Data Objects. Jag gillar speciellt att koden är ren och väl strukturerad. Databasen klass hanterar koppligen mot databasen, view katalogen innehåller alla vyer, och index.php fil hanterar alla router. Vi fick till och med SQL kod för att återskapa databasen i setup.sql. Videoserien gjorde det också lättare att förstå och navigera i koden.
+
+
+**Hur gick det att överföra koden in i ramverket, stötte du på några utmaningar?**
+
+Det gick bra generellt. En del var repetition från förra veckan när vi överförde tärningspelet in i ramverket, men det blev större den här gången eftersom koden inkluderade en databas och flera router och vyer. Vi hade också en extra utmaning med att skapa databasen i student server, men det gick bra med hjälp av videoserien. Jag fick lite problem i början med hanteringen av routes i router/movies.php fil. Problemet var att jag hade blandat get och post metoderna i olika form och det tog lite tid innan jag insåg att jag hade kodat router för att bara hantera get requests.
+
+**Berätta om din slutprodukt för filmdatabasen, gjorde du endast basfunktionaliteten eller lade du till extra features och hur tänkte du till kring användarvänligheten och din kodstruktur?**
+
+Tyvärr jobbade jag bara med basfunktionaliteten i uppgiften, eftersom jag ligger lite efter i den andra kursen (det individuella projektet) och behöver prioritera min tid. Men jag är nöjd med mitt arbete den här veckan. Jag har fått en tydligare inblick i hur PDO fungerar och jag känner att jag har börjat få bättre förståelse på ramverkets kod och struktur.   
+
+
+**Vilken är din TIL för detta kmom?**
+
+Min TIL för den här veckan är att integrera databasen i ramverket. Det var också intressant att ser hur man kan inkludera kod för enstaka funktioner i composer.json.
 
 
 Kmom06
