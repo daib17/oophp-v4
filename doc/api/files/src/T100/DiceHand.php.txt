@@ -17,14 +17,15 @@ class DiceHand
     * Constructor to initiate the dicehand with a number of dice.
     *
     * @param int $numberOfDices Number of dice to create, defaults to five.
+    * @param int $nSides Number of sides on dice.
     */
-    public function __construct(int $numberOfDices = 5)
+    public function __construct(int $numberOfDices = 5, int $nSides = 6)
     {
         $this->dices = [];
         $this->values = [];
 
         for ($i = 0; $i < $numberOfDices; $i++) {
-            $this->dices[$i] = new Dice();
+            $this->dices[$i] = new Dice($nSides);
             $this->values[$i] = null;
         }
     }
