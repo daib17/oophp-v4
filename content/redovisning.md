@@ -133,7 +133,22 @@ Min TIL för den här veckan är att integrera databasen i ramverket. Det var oc
 Kmom06
 -------------------------
 
-Här är redovisningstexten
+**Hur gick det att jobba med klassen för filtrering och formatting av texten?**
+
+Det gick bra eftersom vi fick det mesta av koden och till och med en bra struktur till klassen. Den enda problemet jag fick var att phpmd klagade på det statiska anropet till metoden i MarkdownExtra så jag skapade ett objekt och anropade metoden genom objektet istället.
+
+**Berätta om din klasstruktur och kodstruktur för din lösning av webbsidor med innehåll i databasen.**
+
+Min tanke var att först överföra TextFilter klassen i ramverket och sedan gör samma sak med content. Jag skulle följa samma steg som vi gjorde förra veckan med filmövningen. TextFilter klassen fungerade bra. Jag fick en liten namn konflikt med Anax/TextFilter men det var det enda. CMS delen blev lite mer komplicerad. Jag råkade på något sätt krasha min redovisnings sida och jag behövde clona mitt repo och börja om. Till slut fick jag det att fungera. Problemet var att routefilen var ganska stor. Jag skapade en Content klass som innehåller metoder som routern anropar.
+
+Jag följde strukturen från förra vecka, den uppgiften men filmerna. Det blev ganska mycket kod i routefilen till slut. Jag tänkte på att till exempel flytta SQL satserna, som är ganska osnygga strukturer till en klass och anropa metoder för att köra queries, men jag spenderade ganska mycket tid för att få en fungerande kod som det är. Den enda klass som jag använder är TextFilter.  
+
+**Hur känner du rent allmänt för den koden du skrivit i din me/redovisa, vad är bra och mindre bra? Ser du potential till refactoring av din kod och/eller behov av stöd från ramverket?**
+
+Jag är inte alls nöjd med min kod. Den är inte alls objektorienterad programmering. Content är en klass som är bara ett sätt att gömma lite  osnygga SQL statements from routern. Jag skulle vilja ha lite mer tid för att fundera på ett bättre sätt att lösa den här uppgiften på en mer OOP sätt. Kanske en Content klass som innehåller Page och Post objekt?  
+
+**Vilken är din TIL för detta kmom?**
+Det var intressant att jobba med textfiltrering och till och med skapa en klass som kan lätt återanvändas senare. Men det är timmarna med ramverket och databasen som förhoppningsvis kommer att hjälpa mig nästa vecka när jag börja jobba med kmom10.
 
 
 

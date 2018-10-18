@@ -11,4 +11,4 @@ Kursen Objektorienterade webbteknologier, a.k.a. oophp, fokuserar på objektorie
 
 Länka till [dbwebb kursrepot på GitHub](https://github.com/dbwebb-se/oophp).
 
-Länka till [ditt eget repo för me/redovisa på GitHub](https://github.com/daib17/oophp-v4).
+Länka till [mitt eget repo för me/redovisa på GitHub](https://github.com/daib17/oophp-v4).

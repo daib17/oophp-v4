@@ -3,7 +3,7 @@
  * Show all movies.
  */
 $app->router->any("GET|POST", "movies/all", function () use ($app) {
-    $title = "Movies | oophp";
+    $title = "Movies";
 
     $app->db->connect();
     $sql = "SELECT * FROM movie;";
@@ -22,7 +22,7 @@ $app->router->any("GET|POST", "movies/all", function () use ($app) {
  * Search movie by title.
  */
 $app->router->any("GET|POST", "movies/search-title", function () use ($app) {
-    $title = "Search title | oophp";
+    $title = "Movies";
     $searchTitle = getGet("searchTitle");
     $res = null;
 
@@ -46,7 +46,7 @@ $app->router->any("GET|POST", "movies/search-title", function () use ($app) {
  * Search movie by year.
  */
 $app->router->any("GET|POST", "movies/search-year", function () use ($app) {
-    $title = "Search year | oophp";
+    $title = "Movies";
     $doSearch = getGet("doSearch");
     $year1 = getGet("year1", 1900);
     $year2 = getGet("year2", 2100);
@@ -79,6 +79,7 @@ $app->router->any("GET|POST", "movies/search-year", function () use ($app) {
  * Movie select.
  */
 $app->router->any("GET|POST", "movies/select", function () use ($app) {
+    $title = "Movies";
     $movieId = getPost("movieId");
     $app->db->connect();
     if (getPost("doDelete")) {
@@ -95,7 +96,7 @@ $app->router->any("GET|POST", "movies/select", function () use ($app) {
         exit;
     }
 
-    $title = "Select a movie";
+
     $sql = "SELECT id, title FROM movie;";
     $res = $app->db->executeFetchAll($sql);
 
@@ -112,7 +113,7 @@ $app->router->any("GET|POST", "movies/select", function () use ($app) {
  * Movie edit.
  */
 $app->router->any("GET|POST", "movies/edit", function () use ($app) {
-    $title = "Update movie";
+    $title = "Movies";
 
     $movieId    = getPost("movieId") ?: getGet("movieId");
     $movieTitle = getPost("movieTitle");

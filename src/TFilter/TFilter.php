@@ -34,6 +34,9 @@ class TFilter
     */
     public function parse($text, $filters)
     {
+        if ($filters == "") {
+            return $text;
+        }
         // Make an array of the comma separated string $filters
         if (is_array($filters)) {
             $filterArr = $filters;

@@ -1,7 +1,5 @@
 <?php
-/**
- * Show all movies.
- */
+
 $app->router->any("GET|POST", "tfilter/test", function () use ($app) {
     $title = "TextFilter";
 
@@ -17,7 +15,6 @@ $app->router->any("GET|POST", "tfilter/test", function () use ($app) {
     $textMark = file_get_contents(__DIR__ . "/../text/sample.md");
     $htmlMark = $textFilter->parse($textMark, "markdown");
 
-    // $textNl2br = "First sentence.\nSecond sentence";
     $textNl2br = file_get_contents(__DIR__ . "/../text/nl2br.txt");
     $htmlNl2br = $textFilter->parse($textNl2br, "nl2br");
 
